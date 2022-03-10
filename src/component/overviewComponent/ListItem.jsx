@@ -1,27 +1,12 @@
 /* eslint-disable jsx-a11y/heading-has-content */
-import React, { useState } from "react";
-import Edit from "./Edit";
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+
 function ListItem(props) {
-  const date = new Date(props.tanggal);
-  var months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  var monthName = months[date.getMonth()];
   // pop
-  const [pop, setPop] = React.useState(false);
+  console.log(props.nama)
   return (
-    <div className="mb-10">
+    <div className="mb-10 ">
       <div
         data-cy="todo-item"
         className={`border flex left-52 top-60 w-full items-center bg-[#C4C4C4] py-7 rounded-lg shadow-xl justify-between`}
@@ -54,7 +39,7 @@ function ListItem(props) {
                 data-cy="todo-item-title"
                 className="font-semibold text-lg break-all text-[#303030]"
               >
-                {date.getDate()} {monthName} {date.getFullYear()}
+                {props.tahun}
               </h1>
             </div>
             <div>
@@ -69,7 +54,7 @@ function ListItem(props) {
         </div>
         <div
           data-cy="todo-item-delete-button"
-          className="mr-6 text-gray-450 "
+          className="mr-6 text-gray-450 inline-flex items-center gap-x-7"
           onClick={() => {}}
         >
           <svg
@@ -84,26 +69,18 @@ function ListItem(props) {
               clipRule="evenodd"
             />
           </svg>
-          <svg
-            onClick={() => {
-              setPop(true);
-            }}
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 mt-6"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-          </svg>
+          <NavLink to={`/edit/${props.id}`} key={props.id}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+            </svg>
+          </NavLink>
         </div>
       </div>
-      <Edit
-        onClose={() => setPop(false)}
-        getListData={props.getListData}
-        id={props.id}
-        pop={pop}
-        setPop={setPop}
-      ></Edit>
     </div>
   );
 }

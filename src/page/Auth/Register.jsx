@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Error from "../../component/Error";
 import { useDispatch } from "react-redux";
 import {authRegister } from "../../redux/actions/authAction";
-import SortList from "../../component/SortList";
+import SortList from "../../component/historyComponent/SortList";
 import * as Yup from "yup";
 const RegisterSchema = Yup.object().shape({
   username: Yup.string().required("Fill it, please"),
@@ -14,7 +14,7 @@ const RegisterSchema = Yup.object().shape({
 
 function Register() {
   const [sort, setSort] = React.useState(false);
-  const [errorBE, setErrorBE] = React.useState({});
+  const [errorBE, setErrorBE] = React.useState([]);
   const [initialState, setInitialState] = React.useState({
     email: "",
     password: "",

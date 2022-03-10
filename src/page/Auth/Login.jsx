@@ -20,14 +20,13 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const onSubmit = async (values) => {
-    const result = await dispatch(authLogin(values));
-    console.log("result", result);
-    if (result.status === "Fail") {
-      setErrorBE(result);
+    const resultNya = await dispatch(authLogin(values));
+    console.log("result", resultNya);
+    if (resultNya.status === "Fail") {
+      setErrorBE(resultNya);
     }
-    if (result.status === "Success") return navigate("/dashboard/overview");
+    if (resultNya.status === "Success") return navigate("/overview");
   };
-
   console.log(errorBE);
   return (
     <div className="antialiased h-screen w-screen">
@@ -52,6 +51,7 @@ function Login() {
             <div className="ml-10 mb-10">
               <h1 className="font-extrabold text-5xl mb-4">Sign In</h1>
               <h1 className="font-bold text-2xl">Welcome Back!</h1>
+              <h1 className="font-bold text-2xl">{errorBE?.messege}</h1>
             </div>
             <Formik
               initialValues={initialState}

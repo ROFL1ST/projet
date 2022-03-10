@@ -49,8 +49,7 @@ export function authMe() {
       const data = response?.data;
 
       dispatch(loginHandle(data));
-      console.log(data.msg);
-      console.log(data.token);
+
       if (data.msg === "Success") {
         localStorage.setItem("token", data.token);
       }

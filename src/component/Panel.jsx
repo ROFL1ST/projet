@@ -47,6 +47,28 @@ function Panel() {
             </li>
           </NavLink>
           <NavLink
+            to="history"
+            className={(navData) =>
+              navData.isActive ? "text-[#0D7377] font-bold" : ""
+            }
+          >
+            <li className="flex gap-x-4 items-center hover:text-[#0D7377] cursor-pointer">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <h3>History</h3>
+            </li>
+          </NavLink>
+          <NavLink
             to="student"
             className={(navData) =>
               navData.isActive ? "text-[#0D7377] font-bold" : ""
@@ -64,22 +86,29 @@ function Panel() {
               <h3>Students</h3>
             </li>
           </NavLink>
-          <li className="flex gap-x-4 items-center hover:text-[#0D7377] cursor-pointer">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
-                clipRule="evenodd"
-              />
-              <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
-            </svg>
-            <h3>Officers</h3>
-          </li>
+          <NavLink
+            to="officers"
+            className={(navData) =>
+              navData.isActive ? "text-[#0D7377] font-bold" : ""
+            }
+          >
+            <li className="flex gap-x-4 items-center hover:text-[#0D7377] cursor-pointer">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                  clipRule="evenodd"
+                />
+                <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+              </svg>
+              <h3>Officers</h3>
+            </li>
+          </NavLink>
         </ul>
         {isLoading ? (
           <React.Fragment>
@@ -89,10 +118,10 @@ function Panel() {
           <div className="absolute bottom-10 rounded-xl  account w-64 h-36 bg-[#0D7377]">
             <div className="animate-pulse rounded-full bg-slate-700 h-10 w-10 m-4 ml-5"></div>
             <h1 className="text-white font-bold text-lg -mt-1 pl-6 capitalize">
-              {item.namaPetugas}
+              {item?.namaPetugas}
             </h1>
             <h2 className="text-white font-medium text-md flex pl-6">
-              {item.level}{" "}
+              {item?.level}{" "}
               <span
                 onClick={() => {
                   localStorage.clear();
